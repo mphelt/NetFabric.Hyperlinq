@@ -10,13 +10,13 @@ jobs:
     - name: Check out repository
       uses: actions/checkout@v2
     - name: Setup .NET Core
-      uses: actions/setup-dotnet@v1.4.0
+      uses: actions/setup-dotnet@v1.6.0
       with:
-        dotnet-version: 5.0.100-preview.7
+        dotnet-version: 5.0.100-preview.8
     - name: Build solution
       run: dotnet build
     - name: Tests and coverage
-      run: dotnet test ./NetFabric.Hyperlinq.UnitTests/NetFabric.Hyperlinq.UnitTests.csproj -p:CollectCoverage=true -p:CoverletOutputFormat=lcov -p:CoverletOutput=TestResults/ /p:ExcludeByAttribute="GeneratedCodeAttribute" /p:ExcludeByFile="../NetFabric.Hyperlinq.Interfaces/*.cs"
+      run: dotnet test ./NetFabric.Hyperlinq.UnitTests/NetFabric.Hyperlinq.UnitTests.csproj -f:net5.0 -p:CollectCoverage=true -p:CoverletOutputFormat=lcov -p:CoverletOutput=TestResults/ /p:ExcludeByAttribute="GeneratedCodeAttribute" /p:ExcludeByFile="../NetFabric.Hyperlinq.Interfaces/*.cs"
     - name: Publish coverage report to coveralls.io
       uses: coverallsapp/github-action@master
       with:
