@@ -25,7 +25,7 @@ namespace NetFabric.Hyperlinq
                     for (var index = 0; index < array.Length; index++)
                     {
                         result = predicate(array![index]);
-                        index = result.Conditional(end, index);
+                        index = result.Conditional(end, index); // result ? end : index
                     }
                 }
                 else
@@ -35,7 +35,7 @@ namespace NetFabric.Hyperlinq
                     for (var index = source.Offset; index <= end; index++)
                     {
                         result = predicate(array![index]);
-                        index = result.Conditional(end, index);
+                        index = result.Conditional(end, index); // result ? end : index
                     }
                 }
             }
@@ -59,7 +59,7 @@ namespace NetFabric.Hyperlinq
                     for (var index = 0; index < array.Length; index++)
                     {
                         result = predicate(array![index], index);
-                        index = result.Conditional(end, index);
+                        index = result.Conditional(end, index); // result ? end : index
                     }
                 }
                 else
@@ -71,7 +71,7 @@ namespace NetFabric.Hyperlinq
                         for (var index = 0; index <= end; index++)
                         {
                             result = predicate(array![index], index);
-                            index = result.Conditional(end, index);
+                            index = result.Conditional(end, index); // result ? end : index
                         }
                     }
                     else
@@ -81,7 +81,7 @@ namespace NetFabric.Hyperlinq
                         for (var index = 0; index <= end; index++)
                         {
                             result = predicate(array![index + offset], index);
-                            index = result.Conditional(end, index);
+                            index = result.Conditional(end, index); // result ? end : index
                         }
                     }
                 }
