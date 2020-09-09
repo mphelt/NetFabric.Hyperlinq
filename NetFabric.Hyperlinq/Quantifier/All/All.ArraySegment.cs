@@ -11,14 +11,17 @@ namespace NetFabric.Hyperlinq
             if (predicate is null)
                 Throw.ArgumentNullException(nameof(predicate));
 
+            var result = true;
             if (source.Any())
             {
                 if (source.IsWhole())
                 {
-                    foreach (var item in source.Array)
+                    var array = source.Array;
+                    var end = array.Length - 1;
+                    for (var index = 0; index < array.Length; index++)
                     {
-                        if (!predicate(item))
-                            return false;
+                        result = !predicate(array![index]);
+                        index = result.Conditional(end, index);
                     }
                 }
                 else
@@ -27,12 +30,12 @@ namespace NetFabric.Hyperlinq
                     var end = source.Count + source.Offset - 1;
                     for (var index = source.Offset; index <= end; index++)
                     {
-                        if (!predicate(array![index]))
-                            return false;
+                        result = !predicate(array![index]);
+                        index = result.Conditional(end, index);
                     }
                 }
             }
-            return true;
+            return result;
         }
 
 
@@ -42,17 +45,17 @@ namespace NetFabric.Hyperlinq
             if (predicate is null)
                 Throw.ArgumentNullException(nameof(predicate));
 
+            var result = true;
             if (source.Any())
             {
                 if (source.IsWhole())
                 {
-                    var index = 0;
-                    foreach (var item in source.Array)
+                    var array = source.Array;
+                    var end = array.Length - 1;
+                    for (var index = 0; index < array.Length; index++)
                     {
-                        if (!predicate(item, index))
-                            return false;
-
-                        index++;
+                        result = !predicate(array![index], index);
+                        index = result.Conditional(end, index);
                     }
                 }
                 else
@@ -61,13 +64,12 @@ namespace NetFabric.Hyperlinq
                     var end = source.Count + source.Offset - 1;
                     for (var index = source.Offset; index <= end; index++)
                     {
-                        if (!predicate(array![index], index))
-                            return false;
+                        result = !predicate(array![index], index);
+                        index = result.Conditional(end, index);
                     }
                 }
             }
-            return true;
+            return result;
         }
     }
 }
-
