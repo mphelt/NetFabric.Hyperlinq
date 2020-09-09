@@ -19,7 +19,7 @@ namespace NetFabric.Hyperlinq
                     for (var index = 0; index < array.Length; index++)
                     {
                         result = EqualityComparer<TSource>.Default.Equals(array![index], value!);
-                        index = result.Conditional(end, index);
+                        index = result.Conditional(end, index); // result ? end : index
                     }
                 }
                 else
@@ -29,7 +29,7 @@ namespace NetFabric.Hyperlinq
                     for (var index = source.Offset; index <= end; index++)
                     {
                         result = EqualityComparer<TSource>.Default.Equals(array![index], value!);
-                        index = result.Conditional(end, index);
+                        index = result.Conditional(end, index); // result ? end : index
                     }
                 }
             }
@@ -59,7 +59,7 @@ namespace NetFabric.Hyperlinq
                         for (var index = 0; index < array.Length; index++)
                         {
                             result = EqualityComparer<TSource>.Default.Equals(array![index], value!);
-                            index = result.Conditional(end, index);
+                            index = result.Conditional(end, index); // result ? end : index
                         }
                     }
                     else
@@ -69,7 +69,7 @@ namespace NetFabric.Hyperlinq
                         for (var index = source.Offset; index <= end; index++)
                         {
                             result = EqualityComparer<TSource>.Default.Equals(array![index], value!);
-                            index = result.Conditional(end, index);
+                            index = result.Conditional(end, index); // result ? end : index
                         }
                     }
                 }
@@ -88,7 +88,7 @@ namespace NetFabric.Hyperlinq
                         for (var index = 0; index < array.Length; index++)
                         {
                             result = comparer.Equals(array![index], value!);
-                            index = result.Conditional(end, index);
+                            index = result.Conditional(end, index); // result ? end : index
                         }
                     }
                     else
@@ -98,7 +98,7 @@ namespace NetFabric.Hyperlinq
                         for (var index = source.Offset; index <= end; index++)
                         {
                             result = comparer.Equals(array![index], value!);
-                            index = result.Conditional(end, index);
+                            index = result.Conditional(end, index); // result ? end : index
                         }
                     }
                 }
@@ -129,7 +129,7 @@ namespace NetFabric.Hyperlinq
                         for (var index = 0; index < array.Length; index++)
                         {
                             result = EqualityComparer<TResult>.Default.Equals(selector(array![index])!, value!);
-                            index = result.Conditional(end, index);
+                            index = result.Conditional(end, index); // result ? end : index
                         }
                     }
                     else
@@ -139,7 +139,7 @@ namespace NetFabric.Hyperlinq
                         for (var index = source.Offset; index <= end; index++)
                         {
                             result = EqualityComparer<TResult>.Default.Equals(selector(array![index])!, value!);
-                            index = result.Conditional(end, index);
+                            index = result.Conditional(end, index); // result ? end : index
                         }
                     }
                 }
@@ -160,7 +160,7 @@ namespace NetFabric.Hyperlinq
                         for (var index = 0; index < array.Length; index++)
                         {
                             result = defaultComparer.Equals(selector(array![index])!, value!);
-                            index = result.Conditional(end, index);
+                            index = result.Conditional(end, index); // result ? end : index
                         }
                     }
                     else
@@ -170,7 +170,7 @@ namespace NetFabric.Hyperlinq
                         for (var index = source.Offset; index <= end; index++)
                         {
                             result = defaultComparer.Equals(selector(array![index])!, value!);
-                            index = result.Conditional(end, index);
+                            index = result.Conditional(end, index); // result ? end : index
                         }
                     }
                 }
@@ -201,7 +201,7 @@ namespace NetFabric.Hyperlinq
                         for (var index = 0; index < array.Length; index++)
                         {
                             result = EqualityComparer<TResult>.Default.Equals(selector(array![index], index)!, value!);
-                            index = result.Conditional(end, index);
+                            index = result.Conditional(end, index); // result ? end : index
                         }
                     }
                     else
@@ -213,7 +213,7 @@ namespace NetFabric.Hyperlinq
                             for (var index = 0; index <= end; index++)
                             {
                                 result = EqualityComparer<TResult>.Default.Equals(selector(array![index], index)!, value!);
-                                index = result.Conditional(end, index);
+                                index = result.Conditional(end, index); // result ? end : index
                             }
                         }
                         else
@@ -223,7 +223,7 @@ namespace NetFabric.Hyperlinq
                             for (var index = 0; index <= end; index++)
                             {
                                 result = EqualityComparer<TResult>.Default.Equals(selector(array![index + offset], index)!, value!);
-                                index = result.Conditional(end, index);
+                                index = result.Conditional(end, index); // result ? end : index
                             }
                         }
                     }
@@ -245,7 +245,7 @@ namespace NetFabric.Hyperlinq
                         for (var index = 0; index < array.Length; index++)
                         {
                             result = defaultComparer.Equals(selector(array![index], index)!, value!);
-                            index = result.Conditional(end, index);
+                            index = result.Conditional(end, index); // result ? end : index
                         }
                     }
                     else
@@ -257,7 +257,7 @@ namespace NetFabric.Hyperlinq
                             for (var index = 0; index <= end; index++)
                             {
                                 result = defaultComparer.Equals(selector(array![index], index)!, value!);
-                                index = result.Conditional(end, index);
+                                index = result.Conditional(end, index); // result ? end : index
                             }
                         }
                         else
@@ -267,7 +267,7 @@ namespace NetFabric.Hyperlinq
                             for (var index = 0; index <= end; index++)
                             {
                                 result = defaultComparer.Equals(selector(array![index + offset], index)!, value!);
-                                index = result.Conditional(end, index);
+                                index = result.Conditional(end, index); // result ? end : index
                             }
                         }
                     }
