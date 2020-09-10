@@ -11,7 +11,7 @@ namespace NetFabric.Hyperlinq
             if (predicate is null)
                 Throw.ArgumentNullException(nameof(predicate));
 
-            var result = true;
+            var result = false;
             if (source.Any())
             {
                 if (source.IsWhole())
@@ -35,7 +35,7 @@ namespace NetFabric.Hyperlinq
                     }
                 }
             }
-            return result;
+            return !result;
         }
 
 
@@ -45,7 +45,7 @@ namespace NetFabric.Hyperlinq
             if (predicate is null)
                 Throw.ArgumentNullException(nameof(predicate));
 
-            var result = true;
+            var result = false;
             if (source.Any())
             {
                 if (source.IsWhole())
@@ -69,7 +69,7 @@ namespace NetFabric.Hyperlinq
                     }
                 }
             }
-            return result;
+            return !result;
         }
     }
 }
